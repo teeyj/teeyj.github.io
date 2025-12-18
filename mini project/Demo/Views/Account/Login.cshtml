@@ -1,0 +1,83 @@
+﻿@model LoginVM
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="login-page-container">
+
+    <div class="login-form-box">
+        <form id="account" method="post">
+
+            <h2 class="text-center" style="font-family:Arial;font-weight:bold;">Welcome Back</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="form-group">
+                <label asp-for="Email" style="color:black;"></label>
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" style="color:black;"></label>
+                <div class="input-group">
+                    <input asp-for="Password" class="form-control" type="password" id="password-input" placeholder="Enter your password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <br>
+                <div class="form-group checkbox-group">
+                    <label asp-for="RememberMe" class="form-label" style="color:black;">
+                        <input class="form-check-input" asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+
+                <div class="col-md-6 offset-md-3">
+                    <section style="display: flex; flex-direction: column; align-items: center;">
+                        @* --- Text prompt updated for reCAPTCHA --- *@
+
+                        @Html.AntiForgeryToken()
+
+                        @* --- NEW: reCAPTCHA widget added here --- *@
+                        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" style="margin-bottom: 20px;"></div>
+                    </section>
+                </div>
+
+
+                <div class="button-group">
+                    <button id="login-submit" type="submit" class="btn btn-signin">Sign In</button>
+                    <button id="clear-submit" type="reset" class="btn btn-clear">Clear</button>
+                </div>
+
+                <div class="login-links">
+                    <p>Forget your password? </p>
+                    <p>
+                        <a asp-controller="Account" asp-action="ResetPassword">Click here to reset your password</a>
+                    </p>
+                    <p>Don't have an account? </p>
+                    <p>
+                        <a asp-controller="Account" asp-action="Register">Click here to register</a>
+                    </p>
+                </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const togglePasswordBtn = document.getElementById('toggle-password-btn');
+        const passwordInput = document.getElementById('password-input');
+
+        if (togglePasswordBtn && passwordInput) {
+            togglePasswordBtn.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.textContent = type === 'password' ? 'Show' : 'Hide';
+            });
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+}

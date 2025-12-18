@@ -1,0 +1,19 @@
+﻿@model Demo.Models.Discount
+
+@{
+    ViewBag.Title = "Discount";
+}
+
+<div class="discount-card">
+    <h3>Apply Discount</h3>
+
+    <form asp-action="Apply" method="post" class="discount-form">
+        <label for="code">Discount Code</label>
+        <input name="Code" id="code" class="discount-input" placeholder="Enter your code..." />
+
+        <div class="button-container">
+            <button type="submit" class="btn-apply">Apply</button>
+            <button type="button" class="btn-cancel" onclick="window.history.back()">Cancel</button>
+        </div>
+    </form>
+</div>

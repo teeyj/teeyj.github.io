@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Course>
+@{
+    Dictionary<string, int> cart = ViewBag.Cart;
+}
+
+<style>
+    /* Responsive grid container */
+    .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* Card container */
+    .course-card {
+        background: #ffffff;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: column;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        }
+
+    /* Gradient header */
+    .course-card-header {
+        height: 140px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+    }
+
+        .course-card-header img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+    /* Body section */
+    .course-card-body {
+        padding: 15px;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .course-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .course-price {
+        color: #28a745;
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .course-actions {
+        margin-top: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+        .course-actions a {
+            width: 100%;
+            margin-bottom: 6px;
+        }
+</style>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">➕ Create</a>
+    </p>
+}
+
+<div class="course-grid">
+    @foreach (var c in Model)
+    {
+        <div class="course-card">
+
+            <div class="course-card-header">
+                <img src="/products/@c.PhotoURL" />
+            </div>
+
+            <div class="course-card-body">
+                <div class="course-title">@c.Name</div>
+                <div class="course-price">RM @c.Price</div>
+            </div>
+
+            <div class="course-actions">
+                <a asp-action="Details" asp-route-id="@c.CourseId"
+                   class="btn btn-info btn-sm">🔍 Booking</a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Update" asp-route-id="@c.CourseId"
+                       class="btn btn-warning btn-sm">✏️ Update</a>
+
+                   
+                }
+            </div>
+
+        </div>
+    }
+</div>

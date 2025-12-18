@@ -1,0 +1,172 @@
+﻿@model Demo.Models.DiscountVM
+
+@{
+    ViewBag.Title = "Update Discount Code";
+}
+
+@section head {
+    <style>
+        .page-display {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            min-height: 70vh;
+        }
+
+        .content-block {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .main-heading {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-section {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-section label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+                color: #555;
+            }
+
+            .form-section input[type="text"],
+            .form-section input[type="number"],
+            .form-input-field {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                font-size: 1rem;
+                box-sizing: border-box;
+            }
+
+        .validation-message {
+            color: #e3342f;
+            font-size: 0.85em;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .button-primary, .button-secondary {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            flex: 1;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .button-primary {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .button-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
+}
+
+<div class="page-display">
+    <div class="content-block">
+        <h2 class="main-heading">Update Discount Code</h2>
+
+        <form asp-action="Update" method="post" enctype="multipart/form-data" id="discountFrom">
+            <input asp-for="UsedCount" hidden value="@Model.UsedCount" />
+
+            <div class="form-section">
+                <label asp-for="Code">Code</label>
+                <input asp-for="Code" class="form-input-field" />
+                <span asp-validation-for="Code" class="validation-message"></span>
+            </div>
+
+            <div class="form-section">
+                <label asp-for="Type">Discount Type</label>
+                <div>
+                    <input asp-for="Type" value="fixedAmount" type="radio" />Fixed Amount
+                    <input asp-for="Type" value="percentage" type="radio" />Percentage
+                </div>
+                <span asp-validation-for="Type" class="validation-message"></span>
+            </div>
+
+            <div class="form-section" id="discountValue">
+                <p id="hint" style="color:grey; font-size:0.9em;"></p>
+                <label asp-for="Value">Discount Value</label>
+                <input asp-for="Value" id="discountValue-input" type="number" class="form-input-field" />
+                <span asp-validation-for="Value" class="validation-message"></span>
+            </div>
+
+            <div class="form-section">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>Active</span>
+                    <label class="switch">
+                        <input asp-for="IsActive" type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label asp-for="UsageLimit">Usage Limit</label>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    @if (Model.UsageLimit == null)
+                    {
+                        <input name="UsageLimit-radio" checked value="No Limit" type="radio" />
+                        @($"No Limit")
+                        <input name="UsageLimit-radio" value="Limit" type="radio" />
+                        @($"Limit")
+                        <input asp-for="UsageLimit" type="number" style="display: none" value=null min="1" step="1" class="form-input-field" id="UsageLimit-input" />
+                    }
+                    else
+                    {
+                        <input name="UsageLimit-radio" value="No Limit" type="radio" />
+                        @($"No Limit")
+                        <input name="UsageLimit-radio" checked value="Limit" type="radio" />
+                        @($"Limit")
+                        <input asp-for="UsageLimit" type="number" min="1" step="1" class="form-input-field" id="UsageLimit-input" />
+                    }
+                </div>
+                <span asp-validation-for="UsageLimit" class="validation-message"></span>
+            </div>
+
+            <div class="form-section">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>Reset Used Amount (Used Amount: @Model.UsedCount)</span>
+                    <label class="switch">
+                        <input asp-for="IsReset" type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="button-primary">Submit</button>
+                <button type="button" onclick="window.history.back()" class="button-secondary">Back</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Booking Complete";
+}
+
+<div class="text-center">
+    <h1>Booking Complete!</h1>
+    <p>Thank you, your booking (ID: @ViewBag.ReservationId) has been confirmed.</p>
+    <a href="@Url.Action("Index", "Product")">Back to Home</a>
+</div>

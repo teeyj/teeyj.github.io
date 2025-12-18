@@ -1,0 +1,135 @@
+﻿@model Demo.Models.PaymentVM
+
+@{
+    ViewBag.Title = "Payment Method";
+    decimal Total = ViewBag.Total;
+    decimal SubTotal = ViewBag.SubTotal;
+}
+
+<form asp-action="PaymentConfirmed" method="post">
+    <input hidden name="Total" value="@Total" />
+    <input hidden name="SubTotal" value="@SubTotal" />
+    <!-- Payment Method -->
+    <div class="payment-methods">
+        <h3>Choose Payment Method</h3>
+
+        <!-- Card Payment -->
+        <div class="method">
+            <input type="radio" id="card" name="PaymentMethod" value="Card" />
+            <label for="card">
+                <img src="~/images/visa.png" alt="Visa" class="pay-icon" />
+                Pay with Card (Visa/Master)
+            </label>
+
+            <div id="bank-options" class="bank-options" style="display: none">
+                <label for="bank">Select Bank:</label>
+                <select asp-for="SelectBank" class="form-control bank-select">
+                    <option value="">-- Select Bank --</option>
+                    <option value="Maybank">Maybank</option>
+                    <option value="CIMB">CIMB</option>
+                    <option value="PublicBank">Public Bank</option>
+                    <option value="RHB">RHB</option>
+                    <option value="HongLeong">Hong Leong Bank</option>
+                    <option value="Ambank">AmBank</option>
+                    <option value="BSN">BSN</option>
+                </select>
+                <div>
+                    <label asp-for="CardNumber">Card Number:</label>
+                    <input asp-for="CardNumber" class="form-control" placeholder="Enter Credit Card Number" />
+                    <span asp-validation-for="CardNumber" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TnG eWallet -->
+        <div class="method tng-method">
+            <input type="radio" id="tng" name="PaymentMethod" value="TnG" />
+            <label for="tng">
+                <img src="/images/tng.png" alt="TnG" class="pay-icon" />
+                Pay with Touch 'n Go eWallet
+            </label>
+        </div>
+        <div id="tng-method" class="tng-method" style="display: none">
+            <label asp-for="TngNumber">Phone Number:</label>
+            <input asp-for="TngNumber" class="form-control" placeholder="Enter Phone Number" />
+            <span asp-validation-for="TngNumber" class="text-danger"></span>
+        </div>
+
+        <div class="method" id="ewallet-method-container">
+            <input type="radio" id="ewallet" name="PaymentMethod" value="EWallet" checked />
+            <label for="ewallet">
+                Pay with Training Cube E-wallet
+            </label>
+        </div>
+    </div>
+    <input type="submit" value="Confirm Payment" class="pay-btn" />
+</form>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
+        padding: 30px;
+        color: #333;
+    }
+
+    .method {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+    }
+
+        .method:hover {
+            border-color: #007bff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+        }
+
+        .method input[type="radio"] {
+            margin-right: 15px;
+            accent-color: #007bff;
+        }
+
+    .pay-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+
+    #ewallet-method-container {
+        border-color: #28a745;
+        background-color: #e6f7ea;
+        position: relative;
+    }
+
+        #ewallet-method-container:hover {
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+        }
+
+        #ewallet-method-container .ewallet-balance {
+            position: absolute;
+            right: 15px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+    .pay-btn {
+        width: 100%;
+        max-width: 400px;
+        padding: 15px 20px;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        transition: background 0.3s;
+    }
+</style>

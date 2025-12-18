@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Send Receipt";
+}
+
+<div class="text-center" style="padding: 40px;">
+    <h1 class="display-4">Payment Successful!</h1>
+    <p style="font-size: 1.2em;">Your booking (ID: @ViewBag.ReservationId) is confirmed.</p>
+
+    <hr />
+
+    <p>You can now finish your booking process.</p>
+    <a href="@Url.Action("BookingComplete", "Payment", new { id = ViewBag.ReservationId })" class="btn btn-success btn-lg">
+        Click here to finish booking
+    </a>
+
+    <hr style="margin-top: 40px; margin-bottom: 40px;" />
+
+    <h4>Or, get a receipt sent to your email</h4>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <form action="@Url.Action("SendReceiptEmail", "Payment")" method="post">
+                <input type="hidden" name="reservationId" value="@ViewBag.ReservationId" />
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email address..." required />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Send Receipt</button>
+            </form>
+        </div>
+    </div>
+</div>

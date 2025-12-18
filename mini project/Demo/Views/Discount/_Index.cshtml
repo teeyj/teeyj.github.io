@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Discount>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">➕ Create</a>
+</p>
+
+<table>
+    <tr>
+        <th><strong>Code</strong></th>
+        <th><strong>Type</strong></th>
+        <th><strong>Value</strong></th>
+        <th><strong>Active</strong></th>
+        <th><strong>Usage Limit</strong></th>
+        <th><strong>Used Amount</strong></th>
+        <th></th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td> @d.Code</td>
+            <td>
+                @if (d.DiscountType == "fixedAmount")
+                {
+                    @($"Fixed Amount")
+                }
+                else if (d.DiscountType == "percentage")
+                {
+                    @($"Percentage")
+                }
+            </td>
+            <td>
+                @if (d.DiscountType == "fixedAmount")
+                {
+                    @($"RM{d.DiscountValue}")
+                }
+                else if (d.DiscountType == "percentage")
+                {
+                    @($"{d.DiscountValue * 100}%")
+                }
+            </td>
+            <td>
+                @if (d.IsActive)
+                {
+                    @($"Active")
+                }
+                else
+                {
+                    @($"No Active")
+                }
+            </td>
+            <td>
+                @if (d.UsageLimit == null)
+                {
+                    @($"No Limit")
+                }
+                else
+                {
+                    @d.UsageLimit
+                }
+            </td>
+            <td> @d.UsedCount</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@d.DiscountId" method="post" onsubmit="return confirm('Are you sure you want to delete this discount code?');">
+                    <a asp-action="Update" asp-route-id="@d.DiscountId" class="btn btn-warning btn-sm">✏️ Update</a>
+                    <button type="submit" class="btn btn-danger btn-sm">🗑️ Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+
+
+</table>

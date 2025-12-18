@@ -1,0 +1,161 @@
+﻿@model BookingReportPageVM
+@{
+    ViewBag.Title = "Booking Records Report";
+
+    string GetSortIcon(string fieldName)
+    {
+        if (Model.SortField == fieldName)
+        {
+            return Model.SortDirection == "asc" ? "▲" : "▼";
+        }
+        return "";
+    }
+}
+
+
+<form asp-action="BookingReport" method="get" class="mb-4 p-3 border rounded">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="startDateFilter" value="@(Model.StartDateFilter?.ToString("yyyy-MM-dd"))" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">End Date</label>
+            <input type="date" name="endDateFilter" value="@(Model.EndDateFilter?.ToString("yyyy-MM-dd"))" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Course Type</label>
+            <select name="courseTypeFilter" class="form-select">
+                <option value="All">All Course</option>
+                @foreach (var course in Model.AllCourseTypes)
+                {
+                    <option value="@course" selected="@(Model.CourseTypeFilter == course)">@course</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Search Member</label>
+            <input type="text" name="memberSearchFilter" value="@Model.MemberSearchFilter" class="form-control" placeholder="Name or Email..." />
+        </div>
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+            <a asp-action="BookingReport" class="btn btn-secondary">Clear Filters</a>
+
+            <a asp-action="ExportBookingReportToExcel"
+               asp-all-route-data="@Context.Request.Query.ToDictionary(q => q.Key, q => q.Value.ToString())"
+               asp-route-page=""
+               asp-route-sortField=""
+               asp-route-sortDirection=""
+               class="btn btn-success">
+                <i class="bi bi-file-earmark-excel-fill"></i> Export to Excel
+            </a>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="BookingReport"
+                   asp-route-sortField="BookingId"
+                   asp-route-sortDirection="@(Model.SortField == "BookingId" && Model.SortDirection == "asc" ? "desc" : "asc")"
+                   asp-route-page="@Model.CurrentPage"
+                   asp-route-courseTypeFilter="@Model.CourseTypeFilter"
+                   asp-route-memberSearchFilter="@Model.MemberSearchFilter"
+                   asp-route-startDateFilter="@Model.StartDateFilter?.ToString("yyyy-MM-dd")"
+                   asp-route-endDateFilter="@Model.EndDateFilter?.ToString("yyyy-MM-dd")">
+                    @Html.DisplayNameFor(m => m.Bookings.First().BookingId) @Html.Raw(GetSortIcon("BookingId"))
+                </a>
+            </th>
+            <th>
+                <a asp-action="BookingReport"
+                   asp-route-sortField="CourseName"
+                   asp-route-sortDirection="@(Model.SortField == "CourseName" && Model.SortDirection == "asc" ? "desc" : "asc")"
+                   asp-route-page="@Model.CurrentPage"
+                   asp-route-courseTypeFilter="@Model.CourseTypeFilter"
+                   asp-route-memberSearchFilter="@Model.MemberSearchFilter"
+                   asp-route-startDateFilter="@Model.StartDateFilter?.ToString("yyyy-MM-dd")"
+                   asp-route-endDateFilter="@Model.EndDateFilter?.ToString("yyyy-MM-dd")">
+                    @Html.DisplayNameFor(m => m.Bookings.First().CourseName) @Html.Raw(GetSortIcon("CourseName"))
+                </a>
+            </th>
+            <th>
+                <a asp-action="BookingReport"
+                   asp-route-sortField="MemberName"
+                   asp-route-sortDirection="@(Model.SortField == "MemberName" && Model.SortDirection == "asc" ? "desc" : "asc")"
+                   asp-route-page="@Model.CurrentPage"
+                   asp-route-courseTypeFilter="@Model.CourseTypeFilter"
+                   asp-route-memberSearchFilter="@Model.MemberSearchFilter"
+                   asp-route-startDateFilter="@Model.StartDateFilter?.ToString("yyyy-MM-dd")"
+                   asp-route-endDateFilter="@Model.EndDateFilter?.ToString("yyyy-MM-dd")">
+                    @Html.DisplayNameFor(m => m.Bookings.First().MemberName) @Html.Raw(GetSortIcon("MemberName"))
+                </a>
+            </th>
+            <th>
+                <a asp-action="BookingReport"
+                   asp-route-sortField="BookingDate"
+                   asp-route-sortDirection="@(Model.SortField == "BookingDate" && Model.SortDirection == "asc" ? "desc" : "asc")"
+                   asp-route-page="@Model.CurrentPage"
+                   asp-route-courseTypeFilter="@Model.CourseTypeFilter"
+                   asp-route-memberSearchFilter="@Model.MemberSearchFilter"
+                   asp-route-startDateFilter="@Model.StartDateFilter?.ToString("yyyy-MM-dd")"
+                   asp-route-endDateFilter="@Model.EndDateFilter?.ToString("yyyy-MM-dd")">
+                    @Html.DisplayNameFor(m => m.Bookings.First().BookingDate) @Html.Raw(GetSortIcon("BookingDate"))
+                </a>
+            </th>
+            <th>@Html.DisplayNameFor(m => m.Bookings.First().TimeSlots)</th>
+            <th>
+                <a asp-action="BookingReport"
+                   asp-route-sortField="Total"
+                   asp-route-sortDirection="@(Model.SortField == "Total" && Model.SortDirection == "asc" ? "desc" : "asc")"
+                   asp-route-page="@Model.CurrentPage"
+                   asp-route-courseTypeFilter="@Model.CourseTypeFilter"
+                   asp-route-memberSearchFilter="@Model.MemberSearchFilter"
+                   asp-route-startDateFilter="@Model.StartDateFilter?.ToString("yyyy-MM-dd")"
+                   asp-route-endDateFilter="@Model.EndDateFilter?.ToString("yyyy-MM-dd")">
+                    @Html.DisplayNameFor(m => m.Bookings.First().Total) @Html.Raw(GetSortIcon("Total"))
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bookings)
+        {
+            <tr>
+                <td>@item.BookingId</td>
+                <td>@item.CourseName</td>
+                <td>@item.MemberName</td>
+                <td>@item.BookingDate.ToShortDateString()</td>
+                <td>@item.TimeSlots</td>
+                <td>@item.Total.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="BookingReport"
+                   asp-all-route-data="@Context.Request.Query.ToDictionary(q => q.Key, q => q.Value.ToString())"
+                   asp-route-page="@(Model.CurrentPage - 1)">Previous</a>
+            </li>
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-action="BookingReport"
+                       asp-all-route-data="@Context.Request.Query.ToDictionary(q => q.Key, q => q.Value.ToString())"
+                       asp-route-page="@i">@i</a>
+                </li>
+            }
+            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                <a class="page-link" asp-action="BookingReport"
+                   asp-all-route-data="@Context.Request.Query.ToDictionary(q => q.Key, q => q.Value.ToString())"
+                   asp-route-page="@(Model.CurrentPage + 1)">Next</a>
+            </li>
+        </ul>
+    </nav>
+}

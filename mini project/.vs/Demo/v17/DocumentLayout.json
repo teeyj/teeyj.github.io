@@ -1,0 +1,572 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\models\\viewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\models\\viewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\helpers\\menuhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\helpers\\menuhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\home\\aboutwe.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\home\\aboutwe.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\ewallet\\topup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\ewallet\\topup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\payment\\paymentmethod.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\payment\\paymentmethod.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\product\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\product\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.CoursePhotos.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Courses.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\models\\db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\models\\db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\product\\_index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\product\\_index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\discount\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\discount\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Reservations.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Payments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.ReservationLines.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\report\\myusage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\report\\myusage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\report\\courseusage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\report\\courseusage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\report\\memberactivity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\report\\memberactivity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\report\\bookingreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\report\\bookingreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|c:\\users\\zicong\\desktop\\mini project\\mini project\\mini project\\demo\\views\\report\\activitytrend.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50C1F077-6D9E-4EA9-90CB-7F0ADF4E1D2F}|Demo\\Demo.csproj|solutionrelative:demo\\views\\report\\activitytrend.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAkwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T16:48:16.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Program.cs",
+              "RelativeDocumentMoniker": "Demo\\Program.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Program.cs",
+              "RelativeToolTip": "Demo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T16:05:14.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAwEUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T02:06:26.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Helper.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Helper.cs",
+              "RelativeDocumentMoniker": "Demo\\Helper.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Helper.cs",
+              "RelativeToolTip": "Demo\\Helper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T16:04:33.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T16:04:04.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TopUp.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\EWallet\\TopUp.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\EWallet\\TopUp.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\EWallet\\TopUp.cshtml",
+              "RelativeToolTip": "Demo\\Views\\EWallet\\TopUp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T15:54:37.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PaymentMethod.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Payment\\PaymentMethod.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Payment\\PaymentMethod.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Payment\\PaymentMethod.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Payment\\PaymentMethod.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADUAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T15:54:05.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAAGIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T04:36:58.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Models\\ViewModels.cs",
+              "RelativeDocumentMoniker": "Demo\\Models\\ViewModels.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Models\\ViewModels.cs",
+              "RelativeToolTip": "Demo\\Models\\ViewModels.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAlwKQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T04:09:05.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Product\\Details.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAANgAAAAAAAAAAAAAAPAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T04:43:10.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAHwCAAAAAAAAAAAkwKQBAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T04:18:11.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Update.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Update.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Product\\Update.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Update.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Product\\Update.cshtml",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAkwJMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T13:38:56.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DB.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Models\\DB.cs",
+              "RelativeDocumentMoniker": "Demo\\Models\\DB.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Models\\DB.cs",
+              "RelativeToolTip": "Demo\\Models\\DB.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAQwGMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T02:41:18.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAUwP4AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T04:43:24.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AboutWe.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Home\\AboutWe.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Home\\AboutWe.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Home\\AboutWe.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Home\\AboutWe.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGAAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-12T00:43:49.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuHelper.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Helpers\\MenuHelper.cs",
+              "RelativeDocumentMoniker": "Demo\\Helpers\\MenuHelper.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Helpers\\MenuHelper.cs",
+              "RelativeToolTip": "Demo\\Helpers\\MenuHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T04:39:40.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "create.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\create.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Product\\create.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\create.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Product\\create.cshtml",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAkwCwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T14:17:17.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\_Index.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Product\\_Index.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\_Index.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Product\\_Index.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T02:05:24.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "dbo.CoursePhotos [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.CoursePhotos.sql",
+              "ToolTip": "dbo.CoursePhotos [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-15T14:21:50.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "dbo.Courses [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Courses.sql",
+              "ToolTip": "dbo.Courses [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-15T14:15:54.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Index.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Product\\Index.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Product\\Index.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Product\\Index.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T02:05:39.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Update.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Discount\\Update.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Discount\\Update.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Discount\\Update.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Discount\\Update.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-15T14:13:16.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "dbo.Reservations [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Reservations.sql",
+              "ToolTip": "dbo.Reservations [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-15T12:21:35.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "dbo.Payments [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Payments.sql",
+              "ToolTip": "dbo.Payments [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-15T13:17:43.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "dbo.ReservationLines [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.ReservationLines.sql",
+              "ToolTip": "dbo.ReservationLines [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-15T12:21:32.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MyUsage.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\MyUsage.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Report\\MyUsage.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\MyUsage.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Report\\MyUsage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T02:23:49.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\ReservationController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T02:15:59.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAkwMQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T03:04:21.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "dbo.Users.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Users.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_ZICONG_DESKTOP_MINI_PROJECT_MINI_PROJECT_MINI_PROJECT_DEMO_DB.MDF/True/SqlTable/dbo.Users.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-05T03:07:42.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "MemberActivity.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\MemberActivity.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Report\\MemberActivity.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\MemberActivity.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Report\\MemberActivity.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAE4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T01:18:20.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CourseUsage.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\CourseUsage.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Report\\CourseUsage.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\CourseUsage.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Report\\CourseUsage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T04:32:02.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Demo\\Controllers\\ReportController.cs",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Demo\\Controllers\\ReportController.cs",
+              "ViewState": "AgIAAM8BAAAAAAAAAAAkwO8BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:12:16.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ActivityTrend.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\ActivityTrend.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Report\\ActivityTrend.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\ActivityTrend.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Report\\ActivityTrend.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T01:18:38.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "BookingReport.cshtml",
+              "DocumentMoniker": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\BookingReport.cshtml",
+              "RelativeDocumentMoniker": "Demo\\Views\\Report\\BookingReport.cshtml",
+              "ToolTip": "C:\\Users\\zicong\\Desktop\\mini project\\mini project\\mini project\\Demo\\Views\\Report\\BookingReport.cshtml",
+              "RelativeToolTip": "Demo\\Views\\Report\\BookingReport.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T04:13:28.408Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

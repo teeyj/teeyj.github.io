@@ -1,0 +1,268 @@
+﻿@model Demo.Models.Course
+@{
+    ViewBag.Title = "Course Detail";
+    var photoList = ViewBag.PhotoList as List<string> ?? new List<string>();
+    var selectedDateVal = ViewBag.SelectedDate as DateOnly? ?? DateOnly.FromDateTime(DateTime.Today.AddDays(1));
+}
+
+<style>
+    .carousel-img {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+    }
+
+    .booking-card {
+        position: sticky;
+        top: 20px;
+        z-index: 10;
+    }
+
+    .time-slot-card {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 2px solid #e5e7eb; /* Light Gray Default */
+        background-color: #fff;
+    }
+
+        .time-slot-card .icon-filled {
+            display: none;
+        }
+
+        .time-slot-card .icon-empty {
+            display: block;
+            color: #6c757d;
+        }
+
+    .btn-check:checked + .time-slot-card {
+        border-color: #2563eb; 
+        background-color: #eff6ff; /* Light Blue Background */
+    }
+
+        .btn-check:checked + .time-slot-card .icon-empty {
+            display: none;
+        }
+
+        .btn-check:checked + .time-slot-card .icon-filled {
+            display: block;
+            color: #2563eb; /* Blue Dot */
+        }
+
+    /* Disabled State */
+    .btn-check:disabled + .time-slot-card {
+        background-color: #f3f4f6;
+        opacity: 0.6;
+        cursor: not-allowed;
+        border-color: #f3f4f6;
+    }
+</style>
+
+<div class="bg-light min-vh-100 py-4">
+    <div class="container mb-3">
+        <a asp-action="Index" class="text-decoration-none text-secondary d-flex align-items-center gap-2">
+            <i class="bi bi-arrow-left"></i> Back to Courses
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="row g-5">
+
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm p-2 bg-white rounded-3 mb-4">
+                    @if (photoList.Count > 0)
+                    {
+                        <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded-3">
+                                @for (int i = 0; i < photoList.Count; i++)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img src="/products/@photoList[i]" class="d-block w-100 carousel-img" alt="Course Image" />
+                                    </div>
+                                }
+                            </div>
+                            @if (photoList.Count > 1)
+                            {
+                                <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center justify-content-center bg-secondary bg-opacity-10 rounded-3 carousel-img text-muted">
+                            <i class="bi bi-image fs-1"></i>
+                        </div>
+                    }
+                </div>
+
+                <div class="bg-white rounded-3 shadow-sm p-4">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">ID: @Model.CourseId</span>
+                        @if (TempData["Success"] != null)
+                        {
+                            <span class="badge bg-success">@TempData["Success"]</span>
+                        }
+                        @if (TempData["Error"] != null)
+                        {
+                            <span class="badge bg-danger">@TempData["Error"]</span>
+                        }
+                    </div>
+
+                    <h1 class="fw-bold text-dark mb-2">@Model.Name</h1>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="mt-3 pt-3 border-top">
+                            <a asp-action="Update" asp-route-id="@Model.CourseId" class="btn btn-sm btn-outline-warning me-2">✏ update</a>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-md rounded-3 booking-card">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="text-secondary fw-medium">Price</span>
+                            <h2 class="text-primary fw-bold mb-0">RM @Model.Price</h2>
+                        </div>
+
+                        <form method="get" asp-action="Details" asp-controller="Product" class="mb-4">
+                            <input type="hidden" name="id" value="@Model.CourseId" />
+                            <label class="form-label fw-bold small text-muted text-uppercase">1. Select Date</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-calendar"></i></span>
+                                <input type="date" name="selectedDate"
+                                       class="form-control border-start-0 shadow-none ps-0"
+                                       value="@selectedDateVal.ToString("yyyy-MM-dd")"
+                                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                       max="@DateTime.Today.AddMonths(1).ToString("yyyy-MM-dd")"
+                                       onchange="this.form.submit()" />
+                            </div>
+                        </form>
+
+                        <form asp-controller="Reservation" asp-action="Book" method="post" id="bookingForm">
+                            <input type="hidden" name="CourseType" value="@Model.Name" />
+                            <input type="hidden" name="Date" value="@selectedDateVal.ToString("yyyy-MM-dd")" />
+                            <input type="hidden" name="MemberEmail" value="@User.Identity?.Name" />
+                            <input type="hidden" name="CourseId" value="@Model.CourseId" />
+                            <input type="hidden" name="CourseCount" value="1" />
+
+                            <label class="form-label fw-bold small text-muted text-uppercase mb-3">2. Select Time Slot</label>
+
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                @foreach (var time in ViewBag.TimeSlots as List<TimeOnly>)
+                                {
+                                    var timeEnd = time.AddHours(2);
+                                    var reservations = ViewBag.Reservations as List<Demo.Models.Reservation>;
+                                    var reservationLines = ViewBag.ReservationLines as List<Demo.Models.ReservationLine>;
+                                    var reserved = reservationLines?.Where(r => r.Time == time).ToList() ?? new List<Demo.Models.ReservationLine>();
+                                    var reservedCount = 0;
+                                    foreach (var rese in reserved)
+                                    {
+                                        reservedCount += 1;
+                                    }
+                                    var reservationsMember = reservations.Where(r => r.MemberEmail == User.Identity!.Name);
+                                    var reservationLinesMember = new List<Demo.Models.ReservationLine>();
+                                    foreach (var re in reservationsMember)
+                                    {
+                                        reservationLinesMember = reservationLines?.Where(r => r.Time == time && r.ReservationId == re.ReservationId).ToList();
+                                    }
+
+                                    var isPast = selectedDateVal < DateOnly.FromDateTime(DateTime.Today) ||
+                                    (selectedDateVal == DateOnly.FromDateTime(DateTime.Today) && time < TimeOnly.FromDateTime(DateTime.Now));
+                                    var isFull = reservedCount >= 20;
+                                    var isBuyed = false;
+                                    foreach (var re in reservationLinesMember)
+                                    {
+                                        if(time == re.Time)
+                                        {
+                                            isBuyed = true;
+                                            break;
+                                        }
+                                    }
+                                    var isDisabled = isPast || isFull || isBuyed;
+                                    var slotId = $"slot_{time.Ticks}";
+
+                                    <div>
+                                        <input type="checkbox" class="btn-check time-checkbox" name="Times" id="@slotId" value="@time" @(isDisabled ? "disabled" : "") autocomplete="off">
+
+                                        <label class="time-slot-card w-100 p-3 rounded-3 d-flex justify-content-between align-items-center" for="@slotId">
+                                            <div>
+                                                <div class="fw-bold fs-5">@time.ToString("HH:mm") - @timeEnd.ToString("HH:mm")</div>
+                                                <small class="text-muted">
+                                                    @if (isPast)
+                                                    {
+                                                        <span class="text-danger">Expired</span>
+                                                    }
+                                                    else if (isFull)
+                                                    {
+
+                                                        <span class="text-danger">Full</span>
+                                                    }
+                                                    else if (isBuyed)
+                                                    {
+                                                        <span class="text-danger">Already purchased</span>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <span>@(20 - reservedCount) slots available</span>
+                                                    }
+                                                </small>
+                                            </div>
+
+                                            @if (!isDisabled)
+                                            {
+                                                <div class="fs-4">
+                                                    <i class="bi bi-circle icon-empty"></i>          <i class="bi bi-record-circle-fill icon-filled"></i>
+                                                </div>
+                                            }
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+
+                            @if (!User.IsInRole("Admin"))
+                            {
+                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3 shadow-sm mb-3">
+                                    Book This Course
+                                </button>
+                            }
+
+                            <div class="pt-3 border-top text-muted small">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <i class="bi bi-check-circle-fill text-success"></i> Instant confirmation
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-circle-fill text-success"></i> Instant payment
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function (e) {
+            const selected = document.querySelectorAll('.time-checkbox:checked');
+            if (selected.length === 0) {
+                alert("Please select a time slot.");
+                e.preventDefault();
+            } else {
+                 if(!confirm('Confirm booking?')) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+}

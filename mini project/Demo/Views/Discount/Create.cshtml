@@ -1,0 +1,154 @@
+﻿@model Demo.Models.DiscountVM
+
+@{
+    ViewBag.Title = "Create Discount Code";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+    }
+
+    .card-container {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+        .card-container h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #333;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+
+    .radio-options {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .d-flexu {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .btn-primary3, .btn-secondary {
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .btn-primary3 {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: #fff;
+    }
+
+        .btn-primary3:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+        margin-left: 15px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    p#hint {
+        margin-top: 8px;
+        font-size: 0.85em;
+        color: #888;
+    }
+</style>
+
+<div class="card-container">
+    <h2>Create Discount Code</h2>
+    <form asp-action="Create" method="post" enctype="multipart/form-data" id="discountFrom">
+        <input asp-for="IsReset" hidden value="false" />
+        <input asp-for="UsedCount" hidden value=0 />
+
+        <div class="form-group">
+            <label asp-for="Code">Code</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class=""></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Type">Discount Type</label>
+            <div class="radio-options">
+                <input asp-for="Type" value="fixedAmount" type="radio" />Fixed Amount
+                <input asp-for="Type" value="percentage" type="radio" />Percentage
+            </div>
+            <span asp-validation-for="Type" class=""></span>
+        </div>
+
+        <div class="form-group" id="discountValue">
+            <label asp-for="Value">Discount Value</label>
+            <input asp-for="Value" id="discountValue-input" type="number" class="form-control" />
+            <p id="hint" style="color:grey; font-size:0.9em; margin-top:0.5rem;"></p>
+            <span asp-validation-for="Value" class=""></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UsageLimit">Usage Limit</label>
+            <div class="radio-options">
+                <input name="UsageLimit-radio" value="No Limit" type="radio" />No Limit
+                <input name="UsageLimit-radio" value="Limit" type="radio" />Limit
+            </div>
+            <input asp-for="UsageLimit" type="number" style="display: none" value=null min="1" step="1" class="form-control mt-2" id="UsageLimit-input" />
+            <span asp-validation-for="UsageLimit" class=""></span>
+        </div>
+
+        <div class="d-flexu mt-4">
+            <button type="submit" class="btn btn-primary3">Submit</button>
+            <button type="button" onclick="window.history.back()" class="btn btn-secondary">Back</button>
+        </div>
+    </form>
+</div>

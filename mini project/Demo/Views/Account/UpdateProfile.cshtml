@@ -1,0 +1,62 @@
+﻿@model UpdateProfileVM
+
+@{
+    ViewBag.Title = "Account | Update Profile";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Update Profile</h4>
+                </div>
+                <div class="card-body">
+
+                    <form method="post" enctype="multipart/form-data">
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- Email (read show) -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input type="text" class="form-control" value="@Model.Email" readonly />
+                        </div>
+
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" autofocus />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <!-- Photo Upload -->
+                        <div class="mb-3">
+                            <label asp-for="Photo" class="form-label"></label>
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <img src="/photos/@Model.PhotoURL" alt="Profile Photo" class="rounded-circle border" width="80" height="80" />
+                                </div>
+                                <div>
+                                    <input asp-for="Photo" class="form-control" type="file" accept="image/jpeg,image/png" />
+                                    <span asp-validation-for="Photo" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-success px-4">Update</button>
+                            <button type="reset" class="btn btn-secondary px-4">Reset</button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

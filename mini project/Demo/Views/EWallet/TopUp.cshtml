@@ -1,0 +1,191 @@
+﻿@model Demo.Models.TopUpVM
+
+@{
+    ViewBag.Title = " ";
+    decimal Amount = ViewBag.Amount;
+}
+
+<div class="topup-container">
+    <h2>E-Wallet Top-up</h2>
+
+    <div class="balance-info">
+        <h3>Current Balance:</h3>
+        <span class="balance-amount">RM @Model.EWalletVM.Balance</span>
+    </div>
+
+    <form asp-action="TopUp" method="post" class="topup-form">
+        <input asp-for="EWalletVM.TransactionDate" type="hidden" value="@DateTime.UtcNow"></input>
+        <input asp-for="EWalletVM.TransactionType" type="hidden" value="TopUp"></input>
+        <div class="input-group">
+            <label asp-for="EWalletVM.Amount" for="amount">Top-up Amount</label>
+            <input asp-for="EWalletVM.Amount" type="number" value="@Amount" placeholder="Enter amount" min="0.01" step="0.01" required>
+            <span asp-validation-for="EWalletVM.Amount" class="text-danger"></span>
+        </div>
+
+        <div class="quick-options">
+            <button type="button" class="quick-amount-btn" data-amount="20">20</button>
+            <button type="button" class="quick-amount-btn" data-amount="50">50</button>
+            <button type="button" class="quick-amount-btn" data-amount="100">100</button>
+        </div>
+
+        <div class="payment-methods">
+            <h4>Choose Payment Method</h4>
+            <div class="method">
+                <input type="radio" id="card" name="PaymentVM.PaymentMethod" value="Card" />
+                <label for="card">
+                    <img src="~/images/visa.png" alt="Visa" class="pay-icon" />
+                    Pay with Card (Visa/Master)
+                </label>
+
+                <div id="bank-options" class="bank-options" style="display: none">
+                    <label for="bank">Select Bank:</label>
+                    <select asp-for="PaymentVM.SelectBank" class="form-control bank-select">
+                        <option value="">-- Select Bank --</option>
+                        <option value="Maybank">Maybank</option>
+                        <option value="CIMB">CIMB</option>
+                        <option value="PublicBank">Public Bank</option>
+                        <option value="RHB">RHB</option>
+                        <option value="HongLeong">Hong Leong Bank</option>
+                        <option value="Ambank">AmBank</option>
+                        <option value="BSN">BSN</option>
+                    </select>
+                    <div>
+                        <label asp-for="PaymentVM.CardNumber">Card Number:</label>
+                        <input asp-for="PaymentVM.CardNumber" class="form-control" placeholder="Enter Credit Card Number" />
+                        <span asp-validation-for="PaymentVM.CardNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TnG eWallet -->
+            <div class="method tng-method">
+                <input type="radio" id="tng" name="PaymentVM.PaymentMethod" value="TnG" />
+                <label for="tng">
+                    <img src="/images/tng.png" alt="TnG" class="pay-icon" />
+                    Pay with Touch 'n Go eWallet
+                </label>
+            </div>
+            <div id="tng-method" class="tng-method" style="display: none">
+                <label asp-for="PaymentVM.TngNumber">Phone Number:</label>
+                <input asp-for="PaymentVM.TngNumber" class="form-control" placeholder="Enter Phone Number" />
+                <span asp-validation-for="PaymentVM.TngNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Top-up Now</button>
+    </form>
+
+    <div class="security-note">
+        <p>All transactions are secure and encrypted.</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quickAmountButtons = document.querySelectorAll('.quick-amount-btn');
+        const amountInput = document.getElementById('EWalletVM_Amount');
+
+        quickAmountButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const amount = parseFloat(this.getAttribute('data-amount'));
+
+                if (!isNaN(amount)) {
+                    amountInput.value = amount;
+                }
+            });
+        });
+    });</script>
+
+<style>
+    body {
+        background-color: #f0f2f5;
+        color: #333;
+    }
+
+    h2 {
+        color: #444;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        color: #666;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .payment-methods {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+        .payment-methods h4 {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 18px;
+        }
+
+    .method {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+    }
+
+        .method:hover {
+            border-color: #007bff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+        }
+
+        .method input[type="radio"] {
+            margin-right: 15px;
+            accent-color: #007bff;
+        }
+
+            .method input[type="radio"]:checked + label {
+                font-weight: bold;
+                color: #007bff;
+            }
+
+    .pay-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+
+    .bank-options,
+    .tng-method {
+        margin-top: 15px;
+        padding: 15px;
+        border-top: 1px solid #eee;
+        background-color: #f1f7ff;
+        border-radius: 0 0 8px 8px;
+    }
+
+        .bank-options label,
+        .tng-method label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .bank-select,
+        .tng-method .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+            .bank-select:focus,
+            .tng-method .form-control:focus {
+                border-color: #007bff;
+                outline: none;
+            }
+</style>

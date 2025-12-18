@@ -1,0 +1,69 @@
+﻿@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <!-- card -->
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">Register</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <p class="text-muted text-center mb-4">
+                        Please verify your email to continue registration.
+                    </p>
+
+                    <!-- Step 1: enter the email-->
+                    <form asp-action="SendRegisterCode" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Email" class="form-label fw-bold"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter your email" autofocus />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Send Verification Code
+                        </button>
+                    </form>
+
+                    <!-- Step 2: enter the verification code -->
+                    @if (ViewBag.CodeSent != null && !Model.IsVerified)
+                    {
+                        <form asp-action="VerifyRegisterCode" method="post" class="mt-4">
+                            <input type="hidden" asp-for="Email" />
+
+                            <div class="form-group mb-3">
+                                <label for="Code" class="form-label fw-bold">Verification Code</label>
+                                <input name="Code" class="form-control" maxlength="6" placeholder="Enter code" required autofocus />
+                                <span asp-validation-for="Code" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                Verify Code
+                            </button>
+                        </form>
+                    }
+
+                    <!-- message reminder -->
+                    @if (TempData["Info"] != null)
+                    {
+                        <div class="alert alert-info mt-3">@TempData["Info"]</div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

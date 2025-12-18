@@ -1,0 +1,108 @@
+﻿@model Demo.Models.HistoryVM
+
+@{
+    ViewBag.Title = " ";
+}
+
+<div class="receipt-container">
+
+    <div class="details-column">
+        <h1>Reservation Details</h1>
+        <table>
+            <tr>
+                <th><strong>Court</strong></th>
+                <th><strong>Date</strong></th>
+                <th><strong>Time</strong></th>
+                <th><strong>Price (RM)</strong></th>
+                <th><strong>Quantity</strong></th>
+                <th><strong>Subtotal (RM)</strong></th>
+            </tr>
+
+            @foreach (var time in Model.Time)
+            {
+                <tr>
+                    <td> @Model.CourseType</td>
+                    <td> @Model.Date</td>
+                    <td> @time</td>
+                    <td> @Model.Price</td>
+                    <td> @Model.CourseCount</td>
+                    <td> @Model.SubTotal[0]</td>
+                </tr>
+            }
+
+            @if (Model.DiscountValue != null)
+            {
+                <tr>
+                    <td colspan="5" class="right">
+                        Voucher Discount(
+                        @if (Model.DiscountType == "percentage")
+                        {
+                            @($"{Model.DiscountValue * 100}%")
+                        }
+                        else
+                        {
+                            @($"RM{Model.DiscountValue}")
+                        }
+                        )
+                    </td>
+                    <td>
+                        -
+                        @if (Model.DiscountType == "percentage")
+                        {
+                            @((Model.Total / (1 - Model.DiscountValue) * Model.DiscountValue)?.ToString("0.00") ?? "")
+                        }
+                        else
+                        {
+                            @(Model.DiscountValue)
+                        }
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <th colspan="5"></th>
+                <th class="right">
+                    @Model.Total
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="options-column">
+        <h2>E-Receipt</h2>
+
+        <p class="description">Scan the QR code or click the button below to get your PDF receipt.</p>
+
+        <div class="qr-container">
+            @if (!string.IsNullOrEmpty(Model.QrCodeImageBase64))
+            {
+                <img src="@Model.QrCodeImageBase64" alt="E-Receipt QR Code" class="qr-image" />
+            }
+        </div>
+
+        <div class="download-container">
+            <a href="@Url.Action("DownloadReceipt", "History", new { Email = User.Identity?.Name, ReservationId = Model.ReservationId })" class="download-button" download>
+                <i class="fas fa-file-pdf"></i> Download PDF
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+</style>

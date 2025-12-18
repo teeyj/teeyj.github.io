@@ -1,0 +1,238 @@
+﻿@model Demo.Models.MemberActivityPageVM
+
+@{
+    ViewData["Title"] = "Member Activity";
+}
+
+<div class="container-fluid p-4 bg-gray-50" style="min-height: 100vh;">
+
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="p-3 border-bottom">
+                    <form method="get" asp-action="MemberActivity" class="position-relative">
+                        @if (Model.SelectedMemberInfo != null)
+                        {
+                            <input type="hidden" name="memberEmail" value="@Model.SelectedMemberInfo.Email" />
+                        }
+                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <input type="text" name="searchQuery" value="@Model.SearchQuery"
+                               class="form-control ps-5 rounded-pill bg-light border-0"
+                               placeholder="Search members..." onchange="this.form.submit()">
+                    </form>
+                </div>
+
+                <div class="list-group list-group-flush overflow-auto" style="max-height: 600px;">
+                    @foreach (var member in Model.MembersList)
+                    {
+                        var isActive = Model.SelectedMemberInfo?.Email == member.Email ? "bg-blue-light" : "";
+
+                        <a href="@Url.Action("MemberActivity", new { memberEmail = member.Email, searchQuery = Model.SearchQuery })"
+                           class="list-group-item list-group-item-action border-0 p-3 @isActive">
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle d-flex justify-content-center align-items-center text-white me-3 flex-shrink-0"
+                                     style="width: 48px; height: 48px; background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
+                                    @if (!string.IsNullOrEmpty(member.PhotoURL))
+                                    {
+                                        <img src="/photos/@member.PhotoURL" class="rounded-circle w-100 h-100 object-fit-cover">
+                                    }
+                                    else
+                                    {
+                                        <span class="fs-5 fw-bold">@member.Name.Substring(0, 1).ToUpper()</span>
+                                    }
+                                </div>
+
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h6 class="mb-0 text-truncate text-dark fw-bold">@member.Name</h6>
+                                    <small class="text-secondary text-truncate d-block">@member.Email</small>
+                                    <div class="d-flex gap-2 mt-1" style="font-size: 0.75rem;">
+                                        <span class="text-muted">@member.TotalBookings bookings</span>
+                                        <span class="text-muted">•</span>
+                                        <span class="text-muted">@member.TotalSpent.ToString("C0")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+
+                    @if (!Model.MembersList.Any())
+                    {
+                        <div class="p-4 text-center text-muted">
+                            <small>No members found.</small>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            @if (Model.SelectedMemberInfo != null)
+            {
+                <div class="d-flex flex-column gap-4">
+
+                    <div class="card border-0 shadow-sm p-4">
+                        <div class="d-flex align-items-start gap-4 mb-4">
+                            <div class="rounded-circle d-flex justify-content-center align-items-center text-white flex-shrink-0"
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
+                                @if (!string.IsNullOrEmpty(Model.SelectedMemberInfo.PhotoURL))
+                                {
+                                    <img src="/photos/@Model.SelectedMemberInfo.PhotoURL" class="rounded-circle w-100 h-100 object-fit-cover">
+                                }
+                                else
+                                {
+                                    <span class="fs-4 fw-bold">@Model.SelectedMemberInfo.Name.Substring(0, 1).ToUpper()</span>
+                                }
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-1">@Model.SelectedMemberInfo.Name</h4>
+                                <p class="text-secondary mb-0">@Model.SelectedMemberInfo.Email</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3 bg-blue-50">
+                                    <small class="text-secondary d-block mb-1">Total Bookings</small>
+                                    <h4 class="text-primary fw-bold mb-0">@Model.SelectedMemberInfo.TotalBookings</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3" style="background-color: #f3e8ff;">
+                                    <small class="text-secondary d-block mb-1">Total Spent</small>
+                                    <h4 class="fw-bold mb-0" style="color: #6f42c1;">@Model.SelectedMemberInfo.TotalSpent.ToString("C0")</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm p-4">
+                        <h5 class="fw-bold text-dark mb-4">Monthly Activity</h5>
+                        <div style="height: 250px;">
+                            <canvas id="monthlyChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm p-4">
+                        <h5 class="fw-bold text-dark mb-4">Booking History</h5>
+                        <div class="d-flex flex-column gap-3">
+                            @foreach (var booking in Model.BookingHistory)
+                            {
+                                <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle bg-blue-100 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="bi bi-book text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1 fw-bold text-dark">@booking.CourseTitle</h6>
+                                            <div class="d-flex align-items-center gap-2 text-secondary small">
+                                                <i class="bi bi-calendar"></i>
+                                                <span>@booking.ClassDate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="fw-bold text-dark mb-1">@booking.Amount.ToString("C0")</p>
+
+                                        <span class="badge bg-success-subtle text-success rounded-pill fw-normal px-2">
+                                            @booking.Status
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                            @if (!Model.BookingHistory.Any())
+                            {
+                                <p class="text-muted text-center">No booking history found.</p>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="card border-0 shadow-sm h-100 d-flex flex-column justify-content-center align-items-center p-5 text-center">
+                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="bi bi-person text-secondary fs-1"></i>
+                    </div>
+                    <h5 class="text-secondary mb-2">No Member Selected</h5>
+                    <p class="text-muted">Select a member from the list to view their activity</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // 只有当有选中会员时才渲染图表
+    @if (Model.SelectedMemberInfo != null)
+    {
+            <text>
+            var ctx = document.getElementById('monthlyChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar', // 柱状图
+                data: {
+                    labels: @Json.Serialize(Model.ChartLabels),
+                    datasets: [{
+                        label: 'Bookings',
+                        data: @Json.Serialize(Model.ChartValues),
+                        backgroundColor: '#3b82f6', // Blue
+                        borderRadius: 4,
+                        barThickness: 30 // 柱子宽度
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#000',
+                            bodyColor: '#3b82f6',
+                            borderColor: '#e5e7eb',
+                            borderWidth: 1,
+                            displayColors: false,
+                            padding: 10
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1, precision: 0 },
+                            grid: { borderDash: [5, 5], color: '#f3f4f6' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+            </text>
+    }
+</script>
+
+<style>
+    .bg-gray-50 {
+        background-color: #f9fafb;
+    }
+
+    .bg-blue-light {
+        background-color: #eff6ff !important;
+    }
+    /* 选中的背景色 */
+    .bg-blue-50 {
+        background-color: #eff6ff;
+    }
+
+    .bg-blue-100 {
+        background-color: #dbeafe;
+    }
+    /* 隐藏 Chrome 默认的搜索 'x' 按钮，因为我们不需要它 */
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        display: none;
+    }
+</style>

@@ -1,0 +1,85 @@
+﻿@model Demo.Controllers.AccountController.VerifyCodeVM
+@{
+    ViewData["Title"] = "Verify Register Code";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- card -->
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">Email Verification</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <p class="text-muted text-center mb-4">
+                        Enter the 6-digit verification code sent to your email.
+                    </p>
+
+                    <form asp-action="VerifyRegisterCode" method="post">
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Email</label>
+                            <input asp-for="Email" class="form-control" readonly />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Verification Code</label>
+                            <input asp-for="Code" class="form-control" maxlength="6" placeholder="Enter verification code" />
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <button type="submit" class="btn btn-success w-100">Verify</button>
+
+                        <!-- message -->
+                        <div class="alert alert-info mt-3">The verification code has been sent, please check your email and code will expired after 1min</div>
+                    </form>
+
+                    <!-- countdown -->
+                    <div class="alert alert-info text-center mt-3">
+                        Code will expire in: <span id="countdown">01:00</span>
+                    </div>
+
+                    <!-- resend button -->
+                    <div id="resendDiv" style="display:none;" class="mt-2 text-center">
+                        <form asp-action="ResendRegisterCode" method="post">
+                            <input type="hidden" name="email" value="@Model.Email" />
+                            <button type="submit" class="btn btn-outline-success">Resend Code</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        var expireTime = new Date("@ViewBag.ExpireTime").getTime();
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var distance = expireTime - now;
+
+            if (distance <= 0) {
+                document.getElementById("countdown").innerHTML = "Expired";
+                alert("Verification code expired, please request a new one.");
+                document.getElementById("resendDiv").style.display = "block";
+                return;
+            }
+
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+
+            setTimeout(updateCountdown, 1000);
+        }
+        updateCountdown();
+    </script>
+}

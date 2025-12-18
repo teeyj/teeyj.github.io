@@ -1,0 +1,129 @@
+﻿@model Demo.Models.ReservationVM
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
+        padding: 30px;
+        color: #333;
+    }
+</style>
+
+@{
+    ViewBag.Title = "Payment";
+}
+
+<div class="cards">
+    <h2>Confirm Your Booking</h2>
+
+    <table>
+        <tr>
+            <th><strong>Court</strong></th>
+            <th><strong>Date</strong></th>
+            <th><strong>Time</strong></th>
+            <th><strong>Price (RM)</strong></th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Subtotal (RM)</strong></th>
+        </tr>
+
+        @foreach (var time in Model.Time)
+        {
+            <tr>
+                <td> @Model.CourseType</td>
+                <td> @Model.Date</td>
+                <td> @time</td>
+                <td> @Model.Price</td>
+                <td> @Model.CourseCount</td>
+                <td> @Model.SubTotal</td>
+            </tr>
+        }
+
+        @if (Model.discount != null)
+        {
+            <tr>
+                <td colspan="5" class="right">
+                    Voucher Discount(
+                    @if (Model.discount.DiscountType == "percentage")
+                    {
+                        @($"{Model.discount.DiscountValue * 100}%")
+                    }
+                    else
+                    {
+                        @($"RM{Model.discount.DiscountValue}")
+                    }
+                    )
+                </td>
+                <td>
+                    -
+                    @if (Model.discount.DiscountType == "percentage")
+                    {
+                        @((Model.Total * (Model.discount.DiscountValue)).ToString("0.00"))
+                    }
+                    else
+                    {
+                        @(Model.discount.DiscountValue)
+                    }
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <th colspan="5"></th>
+            <th class="right">
+                @if (Model.discount != null)
+                {
+                    @if (Model.discount.DiscountType == "percentage")
+                    {
+                        if ((Model.Total - Model.Total * (Model.discount.DiscountValue)) > 0)
+                        {
+                            ViewBag.Total = Model.Total - Model.Total * (Model.discount.DiscountValue);
+                            @(((Model.Total) - Model.Total * (Model.discount.DiscountValue)).ToString("0.00"))
+                        }
+                        else
+                        {
+                            ViewBag.Total = 0;
+                            @(0)
+                        }
+                    }
+                    else
+                    {
+                        if ((Model.Total - (Model.discount.DiscountValue)) > 0)
+                        {
+                            ViewBag.Total = Model.Total - (Model.discount.DiscountValue);
+                            @(Model.Total - (Model.discount.DiscountValue))
+                        }
+                        else
+                        {
+                            ViewBag.Total = 0;
+                            @(0)
+                        }
+                    }
+                }
+                else
+                {
+                    ViewBag.Total = Model.Total;
+                    @Model.Total
+                }
+            </th>
+        </tr>
+    </table>
+
+    <div class="actions">
+        <!-- Voucher -->
+        <form asp-action="ApplyDiscount" method="get">
+            <input type="submit" value="Apply Voucher→" class="voucher-btn">
+        </form>
+
+        <!-- Checkout -->
+        <form asp-action="PaymentMethod" method="get">
+            <input type="hidden" name="Total" value="@ViewBag.Total" />
+            <input type="hidden" name="SubTotal" value="@Model.SubTotal" />
+            <input type="submit" value="Confirm Payment Method" class="pay-btn" />
+        </form>
+
+        <!-- Cancel Order -->
+        <form asp-action="Details" asp-controller="Product" asp-route-id="@Model.CourseId" method="get">
+            <input type="submit" value="Cancel Payment" class="cancel-btn">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+﻿.login-page-container {
+    background-image: url();
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0vh;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.login-form-box {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #333;
+}
+
+    .login-form-box .btn-clear {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .login-form-box .btn-clear:hover {
+            background-color: #5c636a;
+        }
+
+
+    .login-form-box h2 {
+        font-weight: 500;
+    }
+
+    .login-form-box hr {
+        border-color: rgba(255,255,255,0.2);
+        margin-bottom: 25px;
+    }
+
+    .login-form-box .form-group {
+        margin-bottom: 20px;
+    }
+
+        .login-form-box .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .login-form-box .form-group .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #555;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: black;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+            .login-form-box .form-group .form-control:focus {
+                outline: none;
+                border-color: #0d6efd;
+                box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+            }
+
+        .login-form-box .form-group.checkbox-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .login-form-box .form-group.checkbox-group input {
+            margin-right: 10px;
+        }
+
+
+    .login-form-box .button-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+        .login-form-box .button-group .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+    .login-form-box .btn-signin {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+        .login-form-box .btn-signin:hover {
+            background-color: #89CFF0;
+            color: #0d6efd;
+        }
+
+    .login-form-box .btn-clear {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .login-form-box .btn-clear:hover {
+            background-color: #D3D3D3;
+            color: #6c757d;
+        }
+
+    .login-form-box .login-links {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+        .login-form-box .login-links p {
+            margin-bottom: 0px;
+        }
+
+        .login-form-box .login-links a {
+            color: blue;
+            text-decoration: none;
+        }
+
+            .login-form-box .login-links a:hover {
+                text-decoration: underline;
+            }

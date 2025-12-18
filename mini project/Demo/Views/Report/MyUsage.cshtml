@@ -1,0 +1,171 @@
+﻿@model Demo.Models.MyUsagePageVM
+
+@{
+    ViewData["Title"] = "My Usage Report";
+}
+
+<div class="container-fluid p-4 bg-gray-50" style="min-height: 100vh;">
+    <div class="mx-auto" style="max-width: 1200px;">
+
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+                <form method="get" asp-action="MyUsage">
+                    <div class="row g-3">
+                        <div class="col-md-5">
+                            <label class="form-label text-secondary small fw-bold">
+                                <i class="bi bi-calendar me-1"></i> Start Date
+                            </label>
+                            <input type="date" name="startDate" class="form-control"
+                                   value="@(Model.StartDate?.ToString("yyyy-MM-dd"))">
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label text-secondary small fw-bold">
+                                <i class="bi bi-calendar me-1"></i> End Date
+                            </label>
+                            <input type="date" name="endDate" class="form-control"
+                                   value="@(Model.EndDate?.ToString("yyyy-MM-dd"))">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end gap-2">
+                            <button type="submit" class="btn btn-primary w-100 fw-500">Apply</button>
+                            <a asp-action="MyUsage" class="btn btn-light w-100 text-secondary fw-500">Clear</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-2 fw-500">Total Learning Hours</p>
+                        <p class="text-primary fs-3 fw-bold mb-1">@Model.TotalHours hours</p>
+                        <small class="text-muted">
+                            @Model.StartDate?.ToString("dd MMM") - @Model.EndDate?.ToString("dd MMM")
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-2 fw-500">Courses Attended</p>
+                        <p class="text-primary fs-3 fw-bold mb-0">@Model.TotalCourses courses</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-2 fw-500">Total Sessions</p>
+                        <p class="text-primary fs-3 fw-bold mb-0">@Model.TotalSessions sessions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4 fw-bold text-dark">Learning Hours</h5>
+                <div style="height: 300px;">
+                    <canvas id="usageChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4 fw-bold text-dark">Course Breakdown</h5>
+                <div class="d-flex flex-column gap-3">
+                    @foreach (var course in Model.CourseBreakdown)
+                    {
+                        <div class="d-flex align-items-center justify-content-between p-3 bg-gray-50 rounded-3">
+                            <div>
+                                <h6 class="mb-1 fw-bold text-dark">@course.CourseName</h6>
+                                <p class="text-secondary small mb-0">@course.Sessions sessions completed</p>
+                            </div>
+                            <div class="text-end">
+                                <p class="text-primary fw-bold mb-0">@course.Hours hours</p>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!Model.CourseBreakdown.Any())
+                    {
+                        <p class="text-muted text-center py-3">No course activity found in this period.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('usageChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar', // React 代码用的是 BarChart，这里对应 bar
+        data: {
+            labels: @Json.Serialize(Model.ChartLabels),
+            datasets: [{
+                label: 'Hours',
+                data: @Json.Serialize(Model.ChartValues),
+                backgroundColor: '#3b82f6', // React 代码里的蓝色
+                borderRadius: 4, // 柱子圆角
+                barThickness: 40 // 柱子最大宽度
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: true, position: 'top' },
+                tooltip: {
+                    backgroundColor: '#fff',
+                    titleColor: '#000',
+                    bodyColor: '#3b82f6',
+                    borderColor: '#e5e7eb',
+                    borderWidth: 1,
+                    displayColors: false,
+                    padding: 10
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1, precision: 0 }, // 整数刻度
+                    grid: { borderDash: [5, 5], color: '#f3f4f6' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    .bg-gray-50 {
+        background-color: #f9fafb;
+    }
+
+    .fw-500 {
+        font-weight: 500;
+    }
+
+    .text-primary {
+        color: #3b82f6 !important;
+    }
+    /* 强制使用 React 风格的蓝色 */
+    .btn-primary {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+    }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+</style>

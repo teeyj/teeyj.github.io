@@ -1,0 +1,48 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Home | Browse";
+}
+
+@section head {
+    <style>
+        .photos {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .photo {
+            position: relative;
+        }
+
+            .photo img {
+                display: block;
+                border: 1px solid #333;
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .photo button {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+    </style>
+}
+
+<p>
+    <button data-post="/Home/DeleteAll">Delete All</button>
+    @Model.Count() photo(s)
+</p>
+
+<div class="photos">
+    @foreach (var f in Model)
+    {
+        <div class="photo">
+            <img src="/uploads/@f">
+            <button data-post="/Home/Delete?file=@f">X</button>
+        </div>
+    }
+</div>

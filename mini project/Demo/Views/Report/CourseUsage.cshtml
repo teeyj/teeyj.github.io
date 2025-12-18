@@ -1,0 +1,186 @@
+﻿@model Demo.Models.CourseUsagePageVM
+
+@{
+    ViewData["Title"] = "Course Usage Statistics";
+}
+
+<div class="container-fluid p-4">
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-book text-primary me-2 fs-4"></i>
+                        <h6 class="text-secondary mb-0">Total Bookings</h6>
+                    </div>
+                    <h3 class="text-primary fw-bold">@Model.GlobalTotalBookings</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-graph-up-arrow me-2 fs-4" style="color: #6f42c1;"></i>
+                        <h6 class="text-secondary mb-0">Avg Bookings/Course</h6>
+                    </div>
+                    <h3 class="fw-bold" style="color: #6f42c1;">@Model.AvgBookingsPerCourse</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-currency-dollar text-success me-2 fs-4"></i>
+                        <h6 class="text-secondary mb-0">Total Revenue</h6>
+                    </div>
+                    <h3 class="text-success fw-bold">@Model.GlobalTotalRevenue.ToString("C0")</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-4 text-secondary" style="font-size: 0.9rem;">Booking Trend by Course</h5>
+            <div style="height: 350px;">
+                <canvas id="courseChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-secondary" style="position: sticky; top: 0; z-index: 1;">
+                        <tr>
+                            <th class="ps-4 py-3 border-0 bg-light">Course Title</th>
+                            <th class="py-3 border-0 bg-light">Total Bookings</th>
+                            <th class="py-3 border-0 bg-light">Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.UsageStats)
+                        {
+                            <tr>
+                                <td class="ps-4 py-3 text-dark fw-500">@item.CourseTitle</td>
+                                <td class="py-3 text-secondary">@item.TotalBookings</td>
+                                <td class="py-3 text-success fw-bold">@item.Revenue.ToString("C0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var labels = @Json.Serialize(Model.ChartLabels);
+    var dataValues = @Json.Serialize(Model.ChartValues);
+
+    var ctx = document.getElementById('courseChart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Bookings',
+                data: dataValues,
+                borderColor: '#4285F4',
+                backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                pointBackgroundColor: '#4285F4',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#4285F4',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                fill: false,
+                tension: 0.4,
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#fff',
+                    titleColor: '#000',
+                    bodyColor: '#4285F4',
+                    borderColor: '#ddd',
+                    borderWidth: 1,
+                    displayColors: false,
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            return 'Bookings : ' + context.parsed.y;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    // 修改点 3: 强制 Y 轴只显示整数
+                    ticks: {
+                        stepSize: 1,  // 强制步长为 1，解决 0.2, 0.4 问题
+                        precision: 0  // 不显示小数
+                    },
+                    grid: {
+                        color: '#f0f0f0',
+                        borderDash: [5, 5]
+                    }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .fw-500 {
+        font-weight: 500;
+    }
+
+    .table > :not(caption) > * > * {
+        border-bottom-color: #f0f0f0;
+    }
+
+    /* 优化滚动条样式 (可选，让滚动条好看一点)
+           这段代码只在 Chrome/Edge/Safari 生效
+        */
+    .table-responsive::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+</style>

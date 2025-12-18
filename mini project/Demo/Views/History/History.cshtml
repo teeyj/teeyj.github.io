@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HistoryVM>
+
+@{
+    ViewBag.Title = "My Reservation";
+}
+
+<div class="cards">
+    <table>
+        <tr>
+            <th><strong>Reservation ID</strong></th>
+            <th><strong>Court</strong></th>
+            <th><strong>Date</strong></th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Time (hour)</strong></th>
+            <th><strong>Total (RM)</strong></th>
+            <th></th>
+        </tr>
+
+        @foreach (var line in Model)
+        {
+            <tr>
+                <td>@line.ReservationId</td>
+                <td>@line.CourseType</td>
+                <td>@line.Date</td>
+                <td>@line.CourseCount</td>
+                <td>@line.Time.Count</td>
+                <td>@line.Total</td>
+                <td>
+                    <form asp-action="Detail" method="post" enctype="multipart/form-data">
+                        <input name="ReservationId" hidden value="@line.ReservationId" />
+                        <button class="btn btn-info btn-sm">🔍 Reservation Detail</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

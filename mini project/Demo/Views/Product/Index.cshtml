@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Menu | Course";
+}
+
+@section head {
+    <style>
+        /* Search Bar */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+        }
+
+            .search-box input {
+                flex: 1;
+            }
+    </style>
+}
+
+<body>
+    <form method="get" asp-action="Index" class="search-box">
+        <input type="text" name="search"
+               value="@Context.Request.Query["search"]"
+               class="form-control"
+               placeholder="Search court..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <br />
+</body>
+
+<div id="target">
+    <partial name="_Index">
+</div>
+
+@section foot {
+    <script>
+        $(document).on('change', 'select', e => {
+            $(e.target.form).submit();
+        });
+    </script>
+}

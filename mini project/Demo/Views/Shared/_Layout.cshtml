@@ -1,0 +1,185 @@
+﻿@using Demo.Helpers
+@inject DB db
+@{
+    // --- 只保留读取菜单顺序的逻辑 ---
+    string userMenuOrder = "";
+    if (User.Identity.IsAuthenticated)
+    {
+        var currentUser = db.Users.Find(User.Identity.Name);
+    }
+    var menuItems = MenuService.GetMenuItemsForUser(User, userMenuOrder);
+    var QrCodeImageBase64 = Helper.GetQrCodeImageBase64();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - Training Cube International</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/css/pager.css">
+    <link rel="stylesheet" href="/css/app.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="/css/custom-login.css" asp-append-version="true">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+        }
+
+            header h1 a {
+                font-weight: 700;
+                color: #0d6efd !important;
+            }
+
+        .offcanvas {
+            width: 280px;
+        }
+
+        .offcanvas-header {
+            background: #0d6efd;
+            color: white;
+        }
+
+        #sortable-menu .menu-item, #sortable-menu h6 {
+            cursor: grab;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+            .menu-item a:hover {
+                background: #e9f2ff;
+                color: #0d6efd;
+            }
+
+        .menu-icon {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        main {
+            min-height: 70vh;
+        }
+
+        footer {
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+    </style>
+    @RenderSection("head", false)
+</head>
+<body class="@(ViewBag.Title == "Login" ? "body-login" : "")">
+    <div class="info">@Html.Raw(TempData["Info"])</div>
+
+    <header class="d-flex justify-content-between align-items-center p-3">
+
+        <div class="d-flex align-items-center">
+            <button class="btn btn-primary me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                ☰
+            </button>
+            <h1 class="m-0"><a href="/" class="text-decoration-none"> Training Cube International</a></h1>
+        </div>
+
+        <div class="d-flex align-items-center ms-4">
+
+            @if (User.Identity!.IsAuthenticated)
+            {
+                <div class="me-3 text-muted">
+                    @User.Identity.Name |
+                    @(User.IsInRole("Admin") ? "Admin" : "")
+                    @(User.IsInRole("Member") ? "Member" : "")
+                </div>
+            }
+
+            @if (User.IsInRole("Member"))
+            {
+                var photoURL = db.Members.Find(User.Identity!.Name)!.PhotoURL;
+                <img src="/photos/@photoURL" class="rounded-circle border me-2" style="width:40px;height:40px;object-fit:cover;">
+            }
+
+            @if (!string.IsNullOrEmpty(QrCodeImageBase64))
+            {
+                if (User.IsInRole("Member") || User.IsInRole("Admin"))
+                {
+                    QrCodeImageBase64 = Helper.GetQrCodeImageBase64Login(User.Identity.Name);
+                }
+                <img src="@QrCodeImageBase64" alt="E-Receipt QR Code" class="qr-image" style="width: 50px; height: 50px;" />
+            }
+        </div>
+    </header>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">📂 Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <div id="sortable-menu">
+                @foreach (var item in menuItems)
+                {
+                    if (item.IsHeader)
+                    {
+                        <h6 class="text-muted mt-3" data-id="@item.Id">@item.Text</h6>
+                    }
+                    else
+                    {
+                        <div class="menu-item" data-id="@item.Id">
+                            <a href="@item.Url">
+                                <span class="menu-icon">@item.Icon</span> @item.Text
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <main class="@(ViewBag.Title == "Login" ? "" : "container py-4")">
+        @if (ViewBag.Title != "Login")
+        {
+            <h1 class="border-bottom pb-2">@ViewBag.Title</h1>
+        }
+        @RenderBody()
+    </main>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <script src="/js/app.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    @RenderSection("foot", false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
